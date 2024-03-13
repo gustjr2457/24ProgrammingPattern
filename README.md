@@ -2,10 +2,11 @@
 
 * 사용자 정보
   * 이름 : 서현석
-    * 학번 : 202202034
+  * 학번 : 202202034
 
 ### Version
 * IDE : Visual Studio 2022
   * Compiler : 
-    * Packages : 
+  * Packages :
+    * 어쩌구저쩌구 
 
