@@ -5,7 +5,7 @@
 - 학번 : 202202034
 
 - Version
-- IDE : Visual Studio 2022
-- Compiler : 
-- Packages : 
+* IDE : Visual Studio 2022
+* Compiler : 
+* Packages : 
 
