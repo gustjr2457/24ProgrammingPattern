@@ -4,8 +4,8 @@
   * 이름 : 서현석
   * 학번 : 202202034
 
-### Version
-* IDE : Visual Studio 2022
+* Version
+  * IDE : Visual Studio 2022
   * Compiler : 
   * Packages :
     * 어쩌구저쩌구 
