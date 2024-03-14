@@ -26,7 +26,7 @@
 #### git remote add 이름 저장소_주소 : 새로운 원격 저장소를 등록한다. -f 옵션과 같이 쓰면, git fetch가 함께 실행된다.
 
 ###  .gitignore 사용법과 작성방식 및 내용에 대해서 조사를 해 오시오.
-- 사용법
+- 사용법<br>
 새로운 .gitignore 파일 생성: 프로젝트 루트 디렉토리에 .gitignore 파일을 만듭니다. 만약 이미 .gitignore 파일이 있다면 그 파일을 엽니다.
 <br>
 원하는 내용 추가: .gitignore 파일에는 Git이 추적하지 않아야 하는 파일 및 디렉토리의 패턴을 추가합니다. 예를 들어, Visual Studio 프로젝트의 경우 Visual Studio에서 생성하는 빌드 결과물, 임시 파일 등을 추가할 수 있습니다.
@@ -38,7 +38,7 @@
 <br>
 저장 및 커밋: .gitignore 파일을 저장하고 Git 저장소에 커밋합니다. 이제 Git은 .gitignore에 명시된 파일 및 디렉토리를 무시합니다.
 
-- 작성방식
+- 작성방식 <br>
 파일 무시: 특정 파일을 무시하려면 해당 파일의 이름을 .gitignore 파일에 적습니다. 예를 들어, example.txt를 무시하려면 example.txt라고 .gitignore 파일에 추가하면 됩니다.
 <br>
 와일드카드: 와일드카드(*)는 여러 파일을 한 번에 지정하는 데 사용됩니다. 예를 들어, *.log는 모든 확장자가 .log인 파일을 무시합니다. *은 모든 것을 나타냅니다. 따라서 *만 사용하면 모든 파일을 무시합니다.
@@ -52,7 +52,7 @@
 반전 패턴: 느낌표(!)는 반전 패턴을 나타냅니다. 즉, 특정 파일이나 디렉토리를 무시하지 않도록 할 수 있습니다. 예를 들어, !important.log는 important.log 파일을 무시하지 않습니다.
 <br>
 
-- .gitignore 내용 조사
+- .gitignore 내용 조사 <br>
 *.rsuser, *.suo, *.user, *.userosscache, *.sln.docstates: 사용자별 파일이나 Visual Studio 솔루션 상태 파일 등을 무시합니다.<br>
 *.userprefs: MonoDevelop/Xamarin Studio의 사용자 설정 파일을 무시합니다.<br>
 mono_crash.*: Mono 개발 환경에서 발생하는 크래시 덤프 파일을 무시합니다.<br>
