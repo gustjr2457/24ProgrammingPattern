@@ -20,7 +20,7 @@
 #### 1. change directory로 remote repository와 연결할 위치로 이동한다<br>
 #### 2. git config --global user.name, user.email로 사용자의 정보를 입력한다 config는 사용자 정보 설정을 할 때 사용하는 명령어이다.<br>
 #### --global은 git 서버 전체의 설정 값을 설정한다. 이 옵션을 사용하지 않으면 현재 이용하고 있는 Git 저장소에 대해서만 설정한다.
-#### 3. git init으로 해당 위치에 git 초기화를 해준다.
+#### 3. git init으로 해당 위치에 git initialize를 해준다.
 ![Fourth](https://github.com/gustjr2457/24ProgrammingPattern/assets/127166744/cfac86ad-b7a6-4362-aa3d-c878e497d4c6)
 #### git remote add origin https://github.com/gustjr2457/24ProgrammingPattern.git 로 local repository와 remote repository를 연결한다. 
 #### git remote add 이름 저장소_주소 : 새로운 원격 저장소를 등록한다. -f 옵션과 같이 쓰면, git fetch가 함께 실행된다.
