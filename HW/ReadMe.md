@@ -18,11 +18,23 @@
 #### <br>이름을 작성한 후 Create repository를 누르면 remote repository가 생성된다 (README는 선택사항)
 ![세번째](https://github.com/gustjr2457/24ProgrammingPattern/assets/127166744/bd9e626f-c2e9-4287-8c1e-c623b9a7f941)
 #### 1. change directory로 remote repository와 연결할 위치로 이동한다<br>
-#### 2. git config --global user.name, user.email로 사용자의 정보를 입력한다<br>
-#### 3. git init으로 해당 위치와 remote repository를 연결한다.
+#### 2. git config --global user.name, user.email로 사용자의 정보를 입력한다 config는 사용자 정보 설정을 할 때 사용하는 명령어이다.<br>
+#### --global은 git 서버 전체의 설정 값을 설정한다. 이 옵션을 사용하지 않으면 현재 이용하고 있는 Git 저장소에 대해서만 설정한다.
+#### 3. git init으로 해당 위치에 git 초기화를 해준다.
+![Fourth](https://github.com/gustjr2457/24ProgrammingPattern/assets/127166744/cfac86ad-b7a6-4362-aa3d-c878e497d4c6)
+#### git remote add origin https://github.com/gustjr2457/24ProgrammingPattern.git 로 local repository와 remote repository를 연결한다. 
+#### git remote add 이름 저장소_주소 : 새로운 원격 저장소를 등록한다. -f 옵션과 같이 쓰면, git fetch가 함께 실행된다.
 
-###  제작한 원격 레파지토리 주소를 적으시오.
+###  .gitignore 사용법과 작성방식 및 내용에 대해서 조사를 해 오시오.
 https://github.com/gustjr2457/24ProgrammingPattern.git
+1. 민감한 정보가 들어있는 파일이나 형상관리할 필요가 없는 파일들은 git에서 더이상 추적하지 않도록 .gitignore 파일에 추가해 따로 빼준다.
+- .gitignore 파일은 프로젝트 디렉토리 최상단에 위치하게 한다.
+2. 작성방식
+- 표준 glob 패턴을 따른다.
+- 디렉토리는 끝에 슬래시를 사용해 표현한다.
+- 느낌표로 시작하는 경우는 예외로 처리한다.
+
+
 ---
 ### ReadMe.md 파일에 사용된 Mark Down 표기법 에대해서 헤더/목록(숫자)/순서없는목록(ex>*) / 들여쓰기 / 코드블럭 / 수평선 /링크 / 이미지/ 강조 에 대해 사용 방법을 정리해 오시오
 
