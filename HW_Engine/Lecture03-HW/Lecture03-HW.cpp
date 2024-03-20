@@ -20,6 +20,7 @@ enum MASK {
     YELLOW = 0b1000,
     CYAN = 0b10000,
     MAGENTA = 0b100000,
+    EXIT = 0b1000000
 };
 
 void block()
@@ -47,7 +48,7 @@ int main()
     int InputKeyCode = 0;
 
     cout << "화면에 그림을 그리는 프로그램입니다.\n" << "학번 : 202202034\n" << "이름 : 서현석\n" << endl;
-    while (InputKeyCode != 64 && InputKeyCode != 1000000)
+    while ((InputKeyCode & MASK::EXIT) == false)
     {
         cout << "화면에 그릴 물체 코드를 입력하세요 -> ";
         cin >> InputKeyCode;
