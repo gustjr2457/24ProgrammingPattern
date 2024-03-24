@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <string>
+#include <sstream>
 using namespace std;
 
 enum ForeColour {
@@ -34,7 +36,7 @@ void block()
     cout << endl;
 }
 
-int main()
+void main()
 {
     /*
     흰색 블록을 그리는 키코드 : 1 (1)
@@ -45,43 +47,65 @@ int main()
     마젠타색 블록을 그리는 키코드 : 32 (100000)
     프로그램 종료 : 64 (1000000)
     */
-    int InputKeyCode = 0;
+    string input;
+    int number = 0;
 
     cout << "화면에 그림을 그리는 프로그램입니다.\n" << "학번 : 202202034\n" << "이름 : 서현석\n" << endl;
-    while ((InputKeyCode & MASK::EXIT) == false)
+    while (true)
     {
         cout << "화면에 그릴 물체 코드를 입력하세요 -> ";
-        cin >> InputKeyCode;
-        if (InputKeyCode & MASK::WHITE)
+        getline(cin, input);
+        istringstream stream(input);
+        if (stream >> number)
         {
-            cout << "\x1b[" << static_cast<int>(ForeColour::White) << "m" << endl;
-            block();
+            if (number & MASK::EXIT)
+            {
+                if (number == MASK::EXIT)
+                    break;
+                else if (number > MASK::EXIT || number <= 0)
+                {
+                    cout << "1~64 사이의 값을 입력하세요. " << endl;
+                    continue;
+                }
+            }
+            if (number & MASK::WHITE)
+            {
+                cout << "\x1b[" << static_cast<int>(ForeColour::White) << "m" << endl;
+                block();
+            }
+            if (number & MASK::RED)
+            {
+                cout << "\x1b[" << static_cast<int>(ForeColour::Red) << "m" << endl;
+                block();
+            }
+            if (number & MASK::GREEN)
+            {
+                cout << "\x1b[" << static_cast<int>(ForeColour::Green) << "m" << endl;
+                block();
+            }
+            if (number & MASK::YELLOW)
+            {
+                cout << "\x1b[" << static_cast<int>(ForeColour::Yellow) << "m" << endl;
+                block();
+            }
+            if (number & MASK::CYAN)
+            {
+                cout << "\x1b[" << static_cast<int>(ForeColour::Cyan) << "m" << endl;
+                block();
+            }
+            if (number & MASK::MAGENTA)
+            {
+                cout << "\x1b[" << static_cast<int>(ForeColour::Magenta) << "m" << endl;
+                block();
+            }
         }
-        if (InputKeyCode & MASK::RED)
+        else
         {
-            cout << "\x1b[" << static_cast<int>(ForeColour::Red) << "m" << endl;
-            block();
+            cin.clear();
+            cout << "정수를 입력하세요. " << endl;
+            continue;
         }
-        if (InputKeyCode & MASK::GREEN)
-        {
-            cout << "\x1b[" << static_cast<int>(ForeColour::Green) << "m" << endl;
-            block();
-        }
-        if (InputKeyCode & MASK::YELLOW)
-        {
-            cout << "\x1b[" << static_cast<int>(ForeColour::Yellow) << "m" << endl;
-            block();
-        }
-        if (InputKeyCode & MASK::CYAN)
-        {
-            cout << "\x1b[" << static_cast<int>(ForeColour::Cyan) << "m" << endl;
-            block();
-        }
-        if (InputKeyCode & MASK::MAGENTA)
-        {
-            cout << "\x1b[" << static_cast<int>(ForeColour::Magenta) << "m" << endl;
-            block();
-        }
+        
     }
     cout << "프로그램을 종료합니다." << endl;
 }
