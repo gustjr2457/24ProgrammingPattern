@@ -8,5 +8,5 @@
   * IDE : Visual Studio 2022
   * Compiler : 
   * Packages :
-    * 어쩌구저쩌구 
+    * OpenGL
 
