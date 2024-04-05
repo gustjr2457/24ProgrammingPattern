@@ -13,6 +13,7 @@ float moveUDFactor = 0.0f;
 float scaleFactor = 1.0f;
 
 
+
 void errorCallback(int error, const char* description)
 {
     cerr << "GLFW Error: " << description << endl;
@@ -40,13 +41,19 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     }
     else if (LorR == false)
     {
-        if (prevMouseX - xpos > 0)
+        if (prevMouseX - xpos > 0 && prevMouseX != 0.0)
         {
-            scaleFactor += 0.01f;
-        }
-        else if (prevMouseX - xpos < 0)
-        {
+            /*
             scaleFactor -= 0.01f;
+            glTranslatef(xpos * 0.000001, ypos * 0.000001, 0.0f);*/
+            glScalef(0.9f, 0.9f, 1.0f);
+        }
+        else if (prevMouseX - xpos < 0 && prevMouseX != 0.0)
+        { 
+
+            //scaleFactor += 0.01f;
+            //glTranslatef(xpos * -0.000001, ypos * -0.000001, 0.0f);
+            glScalef(1.1f, 1.1f, 1.0f);
         }
     }
     
@@ -91,44 +98,30 @@ void mouseCallback(GLFWwindow* window, int button, int action, int mods)
 int render()
 {
     glBegin(GL_TRIANGLES);
-
     glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.45f + moveSideFactor), (0.0f + moveUDFactor));
 
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((- 0.10f + moveSideFactor), (0.0f + moveUDFactor));
-
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.28f + moveSideFactor), (-0.24f + moveUDFactor));
+    glVertex2f((-0.45f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
+    glVertex2f((-0.10f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
+    glVertex2f((-0.28f + moveSideFactor) * scaleFactor, (-0.24f + moveUDFactor) * scaleFactor);
     glEnd();
-    
+    // 중점 (-0.27666, -0.08)
 
 
     glBegin(GL_TRIANGLES);
 
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.27f + moveSideFactor), (0.22f + moveUDFactor));
-
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.39f + moveSideFactor), (-0.40f + moveUDFactor));
-
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.21f + moveSideFactor), (-0.15f + moveUDFactor));
+    glVertex2f((-0.27f + moveSideFactor) * scaleFactor, (0.22f + moveUDFactor) * scaleFactor);
+    glVertex2f((-0.39f + moveSideFactor) * scaleFactor, (-0.40f + moveUDFactor) * scaleFactor);
+    glVertex2f((-0.21f + moveSideFactor) * scaleFactor, (-0.15f + moveUDFactor) * scaleFactor);
     glEnd();
-
-
+    // 중점 (-0.29, -0.11)
+    
     glBegin(GL_TRIANGLES);
 
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.45f + moveSideFactor), (0.0f + moveUDFactor));
-
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.23f + moveSideFactor), (0.0f + moveUDFactor));
-
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex2f((-0.15f + moveSideFactor), (-0.40f + moveUDFactor));
+    glVertex2f((-0.45f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
+    glVertex2f((-0.23f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
+    glVertex2f((-0.15f + moveSideFactor) * scaleFactor, (-0.40f + moveUDFactor) * scaleFactor);
     glEnd();
-    
+    // 중점 (-0.27666, 0.13333)
 
     return 0;
 }
@@ -153,11 +146,11 @@ int main(void)
     glfwSetErrorCallback(errorCallback);
     glfwSetKeyCallback(window, keyCallback);
     glfwSetMouseButtonCallback(window, mouseCallback);
-
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
 
+        glMatrixMode(GL_MODELVIEW);
         glClear(GL_COLOR_BUFFER_BIT);
         render();
         glfwSwapBuffers(window);
