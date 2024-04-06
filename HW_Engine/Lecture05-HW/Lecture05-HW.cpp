@@ -12,18 +12,10 @@ float moveSideFactor = 0.0f;
 float moveUDFactor = 0.0f;
 float scaleFactor = 1.0f;
 
-
-
 void errorCallback(int error, const char* description)
 {
     cerr << "GLFW Error: " << description << endl;
 }
-
-bool approximatelyEqual(double a, double b, double epsilon)
-{
-    return abs(a - b) <= epsilon;
-}
-
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
@@ -43,16 +35,10 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     {
         if (prevMouseX - xpos > 0 && prevMouseX != 0.0)
         {
-            /*
-            scaleFactor -= 0.01f;
-            glTranslatef(xpos * 0.000001, ypos * 0.000001, 0.0f);*/
             glScalef(0.9f, 0.9f, 1.0f);
         }
         else if (prevMouseX - xpos < 0 && prevMouseX != 0.0)
         { 
-
-            //scaleFactor += 0.01f;
-            //glTranslatef(xpos * -0.000001, ypos * -0.000001, 0.0f);
             glScalef(1.1f, 1.1f, 1.0f);
         }
     }
@@ -78,8 +64,8 @@ void mouseCallback(GLFWwindow* window, int button, int action, int mods)
     }
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
     {
-        prevMouseX = 0.0;
-        prevMouseY = 0.0;
+        prevMouseX = 0;
+        prevMouseY = 0;
         glfwSetCursorPosCallback(window, nullptr);
     }
     if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
@@ -89,40 +75,42 @@ void mouseCallback(GLFWwindow* window, int button, int action, int mods)
     }
     if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
     {
-        prevMouseX = 0.0;
-        prevMouseY = 0.0;
+        prevMouseX = 0;
+        prevMouseY = 0;
         glfwSetCursorPosCallback(window, nullptr);
     }
 }
 
+
+
 int render()
 {
+    glTranslatef(moveSideFactor * scaleFactor, moveUDFactor * scaleFactor, 0.0f);
     glBegin(GL_TRIANGLES);
-    glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(1.0f, 1.0f, 0.3f);
 
-    glVertex2f((-0.45f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
-    glVertex2f((-0.10f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
-    glVertex2f((-0.28f + moveSideFactor) * scaleFactor, (-0.24f + moveUDFactor) * scaleFactor);
+    glVertex2f(0, 0.6);
+    glVertex2f(0, -0.25);
+    glVertex2f(-0.4, -0.5);
     glEnd();
-    // 중점 (-0.27666, -0.08)
-
 
     glBegin(GL_TRIANGLES);
 
-    glVertex2f((-0.27f + moveSideFactor) * scaleFactor, (0.22f + moveUDFactor) * scaleFactor);
-    glVertex2f((-0.39f + moveSideFactor) * scaleFactor, (-0.40f + moveUDFactor) * scaleFactor);
-    glVertex2f((-0.21f + moveSideFactor) * scaleFactor, (-0.15f + moveUDFactor) * scaleFactor);
+    glVertex2f(0, 0.6);
+    glVertex2f(0.4, -0.5);
+    glVertex2f(0, -0.25);
     glEnd();
-    // 중점 (-0.29, -0.11)
     
     glBegin(GL_TRIANGLES);
 
-    glVertex2f((-0.45f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
-    glVertex2f((-0.23f + moveSideFactor) * scaleFactor, (0.0f + moveUDFactor) * scaleFactor);
-    glVertex2f((-0.15f + moveSideFactor) * scaleFactor, (-0.40f + moveUDFactor) * scaleFactor);
+    glVertex2f(0, -0.25);
+    glVertex2f(0.5, 0.25);
+    glVertex2f(-0.5, 0.25);
     glEnd();
-    // 중점 (-0.27666, 0.13333)
 
+    glTranslatef(0, 0, 0);
+    moveSideFactor = 0;
+    moveUDFactor = 0;
     return 0;
 }
 
