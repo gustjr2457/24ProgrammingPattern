@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bd9b72c6-1a21-4cef-920f-209d991852c1}</ProjectGuid>
-    <RootNamespace>Lecture06HW</RootNamespace>
+    <ProjectGuid>{3b3a4d00-1e35-469a-b9a0-561353b35bc1}</ProjectGuid>
+    <RootNamespace>Lecture10HW</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,19 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MObject.cpp" />
-    <ClCompile Include="MSList.cpp" />
-    <ClCompile Include="ObjectTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MObject.h" />
-    <ClInclude Include="MSList.h" />
-    <ClInclude Include="ObjectTest.h" />
-    <ClInclude Include="Star.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

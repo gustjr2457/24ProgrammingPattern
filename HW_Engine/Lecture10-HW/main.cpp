@@ -1,13 +1,8 @@
-﻿#include <iostream>
-#pragma comment(lib, "Opengl32.lib")
-
-#include <GLFW/glfw3.h>
 #include <iostream>
+#include <GLFW/glfw3.h>
 #include <random>
 #include <cmath>
-
-#include "MSList.h"
-#include "Star.hpp"
+#pragma comment(lib, "Opengl32.lib")
 
 
 void errorCallback(int error, const char* description)
@@ -23,24 +18,9 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	}
 }
 
-MSList<MObject*> list;
-const double PI = 3.1415926;
 int initialize()
 {
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_real_distribution<float> randPos(-1.4f, 1.4f);
-	std::uniform_real_distribution<float> randColor(0.0f, 1.0f);
-	for (int i = 0; i < 300; i++)
-	{
-		double posX = randPos(gen);
-		double posY = randPos(gen);
-		double r = randColor(gen);
-		double g = randColor(gen);
-		double b = randColor(gen);
-		list.push_back(new Star(posX, posY, r, g, b));
-	}
-	
+
 	return 0;
 }
 
@@ -56,15 +36,11 @@ int update()
 
 int render(double rad)
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glRotated(0.1, 0, 0, 1);
-	for (int i = 0; i < 300; i++)
-	{
-		MObject* a = list[i];
-		a->render(rad);
-	}
-
+	glBegin(GL_LINES);
+	glColor3f(1, 1, 1);
+	glVertex2d(0, 0);
+	glVertex2d(0.5 * cos(rad), 0.5 * sin(rad));
+	glEnd();
 	return 0;
 }
 
@@ -74,7 +50,7 @@ int main(void)
 		return -1;
 
 	GLFWwindow* window;
-	window = glfwCreateWindow(1280, 720, "MuSoeunEngine", NULL, NULL);
+	window = glfwCreateWindow(800, 800, "MuSoeunEngine", NULL, NULL);
 
 	if (!window)
 	{
@@ -85,15 +61,14 @@ int main(void)
 	glfwMakeContextCurrent(window);
 	glfwSetErrorCallback(errorCallback);
 	glfwSetKeyCallback(window, keyCallback);
-
+	double rd = 0.001f;
 	initialize();
-	double rd = 1.0f;
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 		update();
 		render(rd);
-		rd += 1.0f;
+		rd += 0.001f;
 		glfwSwapBuffers(window);
 	}
 
