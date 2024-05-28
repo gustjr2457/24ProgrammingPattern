@@ -13,7 +13,7 @@ int main()
 
 	int delay_time_ms = 0;
 
-	while (count < 10)
+	while (count < 100000)
 	{
 		//시작시간과 끝시간
 		prev_end = end;
