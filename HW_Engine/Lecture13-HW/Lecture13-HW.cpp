@@ -2,11 +2,12 @@
 #include <GLFW/glfw3.h>
 #include <random>
 #include <cmath>
-#include <chrono>
-#include <thread>
+#include <vector>
 #pragma comment(lib, "Opengl32.lib")
 
 using namespace std;
+
+const double gravity = 9.8;
 
 void errorCallback(int error, const char* description)
 {
@@ -38,9 +39,12 @@ public:
 
 	void jumpPlayer()
 	{
-		if (posY <= -100)
+		if (posY <= -100 && posY <= 50)
 		{
-			posY += 150.0f;
+			while (posY <= 50)
+			{
+				posY += gravity;
+			}
 		}
 	}
 
@@ -62,9 +66,12 @@ public:
 class Ground
 {
 public:
+	void renderGround()
+	{
 
+	}
 private:
-	float posY = 0.0f;
+	float posY = -100.0f;
 };
 
 
@@ -117,15 +124,9 @@ int main(void)
 	initialize();
 	Player p1;
 	bool IsPlayerJump = false;
-	int delay = 0;
-
-	chrono::steady_clock::time_point prev_end = chrono::steady_clock::now();
-	chrono::steady_clock::time_point end = chrono::steady_clock::now();
 
 	while (!glfwWindowShouldClose(window))
 	{
-		prev_end = end;
-		end = chrono::steady_clock::now();
 
 		glfwSwapInterval(1);
 		glViewport(0, 0, 1280, 720);  // 뷰포트 설정
@@ -143,9 +144,7 @@ int main(void)
 		render();
 		p1.renderPlayer();
 
-		chrono::steady_clock::duration diff = end - prev_end;
-		delay = chrono::duration_cast<chrono::milliseconds>(diff).count() + 1000;
-
+		
 		glfwPollEvents();
 
 		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) 
@@ -156,12 +155,16 @@ int main(void)
 			p1.jumpPlayer();
 			IsPlayerJump = false;
 		}
-
 		if (!p1.IsPosYzero())
-			p1.posY -= 9.8;
+		{
+			p1.posY -= gravity;
+		}
 		
-		if (p1.posY < -100.0f) 
+		if (p1.posY < -100.0f)
+		{
 			p1.posY = -100.0f;
+		}
+		
 
 		glfwSwapBuffers(window);
 	}
