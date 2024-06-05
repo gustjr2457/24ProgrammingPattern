@@ -30,15 +30,18 @@ public:
 		glColor3f(1, 0, 0);
 		glBegin(GL_POLYGON);
 		glVertex2f(posX - 30.0f, posY + 30.0f);
-		glVertex2f(posX,		 posY + 30.0f);
-		glVertex2f(posX,		 posY);
+		glVertex2f(posX, posY + 30.0f);
+		glVertex2f(posX, posY);
 		glVertex2f(posX - 30.0f, posY);
 		glEnd();
 	}
 
 	void jumpPlayer()
 	{
-		posY += 20.0f;
+		if (posY <= -100)
+		{
+			posY += 150.0f;
+		}
 	}
 
 	bool IsPosYzero()
@@ -82,7 +85,7 @@ int update()
 
 void render()
 {
-	
+
 	glColor3f(0, 1, 0.5);
 	glBegin(GL_POLYGON);
 	glVertex2f(-640, -360);
@@ -115,7 +118,7 @@ int main(void)
 	Player p1;
 	bool IsPlayerJump = false;
 	int delay = 0;
-	
+
 	chrono::steady_clock::time_point prev_end = chrono::steady_clock::now();
 	chrono::steady_clock::time_point end = chrono::steady_clock::now();
 
@@ -145,9 +148,9 @@ int main(void)
 
 		glfwPollEvents();
 
-		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) 
 			IsPlayerJump = true;
-		}
+		
 		if (IsPlayerJump)
 		{
 			p1.jumpPlayer();
@@ -155,10 +158,9 @@ int main(void)
 		}
 
 		if (!p1.IsPosYzero())
-		{
 			p1.posY -= 9.8;
-		}
-		if (p1.posY < -100.0f)
+		
+		if (p1.posY < -100.0f) 
 			p1.posY = -100.0f;
 
 		glfwSwapBuffers(window);
