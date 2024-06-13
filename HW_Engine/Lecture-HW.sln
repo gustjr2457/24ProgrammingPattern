@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lecture13-HW", "Lecture13-H
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lecture14-HW", "Lecture14-HW\Lecture14-HW.vcxproj", "{A9937D28-8CF6-4DAC-AAD2-1ABEAE813313}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lecture15-HW", "Lecture15-HW\Lecture15-HW.vcxproj", "{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{A9937D28-8CF6-4DAC-AAD2-1ABEAE813313}.Release|x64.Build.0 = Release|x64
 		{A9937D28-8CF6-4DAC-AAD2-1ABEAE813313}.Release|x86.ActiveCfg = Release|Win32
 		{A9937D28-8CF6-4DAC-AAD2-1ABEAE813313}.Release|x86.Build.0 = Release|Win32
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Debug|x64.ActiveCfg = Debug|x64
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Debug|x64.Build.0 = Debug|x64
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Debug|x86.ActiveCfg = Debug|Win32
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Debug|x86.Build.0 = Debug|Win32
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Release|x64.ActiveCfg = Release|x64
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Release|x64.Build.0 = Release|x64
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Release|x86.ActiveCfg = Release|Win32
+		{A12DCFBD-60A5-4AC0-9AC7-D8E25D26445B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
