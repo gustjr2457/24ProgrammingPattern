@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #pragma comment(lib, "Opengl32.lib")
+
+
 // 기본 오브젝트 클래스 정의
 class Object {
 public:
@@ -22,6 +24,7 @@ public:
 };
 
 const float Object::SIZE = 20.0f; // 물체 크기 (폭과 높이)
+
 
 // 중력 적용 객체 클래스 정의
 class GravityObject : public Object {
